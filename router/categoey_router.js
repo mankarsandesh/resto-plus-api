@@ -1,11 +1,12 @@
-module.exports = app => {
+const express = require('express');
+const categoryRoute = express.Router();
+const categoryService = require('../controller/categoryService');
 
-    const categoryService = require('../controller/categoryService');
 
-    var router = require("express").Router();
+// Submit Category
+categoryRoute.post('/', categoryService.create);
+// Show all Category
+categoryRoute.get('/showCategory', categoryService.findAll);
 
-    router.post('/', categoryService.create);
 
-    app.use('/api/category', router);
-
-};
+module.exports = categoryRoute;

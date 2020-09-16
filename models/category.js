@@ -2,7 +2,7 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('category', {
-    'categoryID': {
+    categoryID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
@@ -10,27 +10,31 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null",
       autoIncrement: true
     },
-    'title': {
+    title: {
       type: DataTypes.STRING(200),
       allowNull: false,
       comment: "null"
     },
-    'description': {
+    description: {
       type: DataTypes.TEXT,
       allowNull: false,
       comment: "null"
     },
-    'icon': {
+    icon: {
       type: DataTypes.STRING(100),
       allowNull: false,
       comment: "null"
     },
-    'date': {
+    createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: sequelize.fn('current_timestamp'),
-      comment: "null"
-    }
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP()')
+  },
+  updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP()')
+  }
   }, {
     tableName: 'category'
   });

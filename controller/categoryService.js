@@ -1,6 +1,7 @@
-const db = require("../models");
-const Category = db.category;
-const Op = db.Sequelize.Op;
+
+
+
+const { fetchAllCategory } = require('../components/category_component');
 
 // Create and Save a new listing
 exports.create = (req, res) => {
@@ -33,8 +34,14 @@ exports.create = (req, res) => {
 }
 
 // Retrieve all listings from the database.
-exports.findAll = (req, res) => {
+exports.findAll = async (req, res) => {
 
+  try {
+    const fetchCategory = await fetchAllCategory();
+    return res.send(fetchCategory);
+  } catch(error){
+    console.log(error);
+  }
 };
 
 // Find a single listing with an id
