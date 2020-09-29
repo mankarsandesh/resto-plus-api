@@ -13,6 +13,7 @@ require('./app/db/config');
 // Routers
 const cityRouter = require('./app/routers/city_route');
 const userRouter = require('./app/routers/user_route');
+const countryRouter = require('./app/routers/country_route');
 
 
 const bodyParser = require('body-parser');
@@ -37,7 +38,7 @@ app.use(device.capture());
 // Routers
 app.use(cityRouter);
 app.use(userRouter);
-
+app.use(countryRouter);
 
 app.listen(port, () => {
     console.log(`Server is up on port ${port}`);

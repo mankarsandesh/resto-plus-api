@@ -4,6 +4,6 @@ const userController = require('../controller/users_controller');
 
 
 // fetch all currency
-usersRouter.get('/users', userController.getAllUsers );
+usersRouter.get('/listingMedia', userController.getAllUsers );
 
 module.exports = usersRouter;
