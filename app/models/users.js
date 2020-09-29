@@ -17,6 +17,10 @@ const Users = db.define('users', {
         allowNull: false,
         unique: true
     },
+    userType : {
+        type : DataTypes.ENUM('user','agent','admin'),
+        defaultValue : 'user'
+    },
     emailActive: {
         type: DataTypes.INTEGER(10),
         allowNull: false,  

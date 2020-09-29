@@ -16,7 +16,7 @@ const Category = db.define(
       unique: true,
     },
     categoryDescription: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING(255),
       allowNull: false,
       unique: true,
     },
