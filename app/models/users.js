@@ -11,7 +11,6 @@ const Users = db.define('users', {
     userName: {
       type: DataTypes.STRING(255),
       allowNull: false,
-      unique: true
     },
     userEmail: {
         type: DataTypes.STRING(255),
@@ -20,11 +19,13 @@ const Users = db.define('users', {
     },
     emailActive: {
         type: DataTypes.INTEGER(10),
-        allowNull: false,        
+        allowNull: false,  
+        defaultValue : 0,      
     },
     status: {
         type: DataTypes.INTEGER(10),
-        allowNull: false,        
+        allowNull: false,    
+        defaultValue : 1,          
     },
     password: {
         type: DataTypes.STRING(100),
