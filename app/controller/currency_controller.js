@@ -1,4 +1,4 @@
-const {allCurrency} = require('../components/models/currency.interface');
+const {allCurrency , storeCurrency} = require('../components/models/currency.interface');
 const {successResponse, serverError} = require('../utils/utils');
 
 // fetch all currency 
@@ -13,6 +13,24 @@ const getAllCurrency =  async (req, res) => {
     }
 }
 
+
+// Store Currency Information
+const currencyStore = async (req,res) => {
+    try {        
+        const userBody = req.body;    
+        const currency = await storeCurrency(userBody);
+        if(currency.error) {
+            return res.status(400).send(badRequestError(currency.error));
+        }
+        return res.send(successResponse(currency));
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(serverError());
+    }
+}
+
+
 module.exports = {
-    getAllCurrency
+    getAllCurrency,
+    currencyStore
 }

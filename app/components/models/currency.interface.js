@@ -14,7 +14,19 @@ const allCurrency  =  async () => {
     }
 }
 
+const storeCurrency = async (data, res) => {
+    try {
+        const currency = await currencyModel.create(data, { raw: true });
+        return currency;
+    } catch (error) {
+        console.log(error);        
+    }
+}
+
+
+
 
 module.exports = {
-    allCurrency
+    allCurrency,
+    storeCurrency
 }
