@@ -11,7 +11,17 @@ const allUsers  =  async () => {
     }
 }
 
+const storeUsers = async (data, res) => {
+    try {
+        const users = await usersModel.create(data, { raw: true });
+        return users;
+    } catch (error) {
+        console.log(error);        
+    }
+}
+
 
 module.exports = {
-    allUsers
+    allUsers,
+    storeUsers
 }

@@ -3,7 +3,11 @@ const usersRouter = express.Router();
 const userController = require('../controller/users_controller');
 
 
-// fetch all currency
-usersRouter.get('/users', userController.getAllUsers );
+// fetch all Users
+usersRouter.get('/users', userController.getAllUsers);
+
+usersRouter.post('/users', userController.usersStore);
+
+
 
 module.exports = usersRouter;
