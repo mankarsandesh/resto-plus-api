@@ -3,8 +3,8 @@ const categoryModel = require('../../models/category');
 
 const allCategory  =  async () => {
     try {
-        const city = await categoryModel.findAll({raw: true});
-        return city;
+        const category = await categoryModel.findAll({raw: true});
+        return category;
     } catch (error) {
         console.log(error);
         throw new Error();
@@ -12,6 +12,18 @@ const allCategory  =  async () => {
 }
 
 
+const storeCategory = async (data, res) => {
+    try {
+        const category = await categoryModel.create(data, { raw: true });
+        return category;
+    } catch (error) {
+        console.log(error);        
+    }
+}
+
+
+
 module.exports = {
-    allCategory
+    allCategory,
+    storeCategory
 }
