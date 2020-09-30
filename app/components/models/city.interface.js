@@ -14,7 +14,20 @@ const allCity  =  async () => {
     }
 }
 
+const storeCity = async (data, res) => {
+    try {
+        const city = await cityModel.create(data, { raw: true });
+        return city;
+    } catch (error) {
+        console.log(error);        
+    }
+}
+
+
+
+
 
 module.exports = {
-    allCity
+    allCity,
+    storeCity
 }

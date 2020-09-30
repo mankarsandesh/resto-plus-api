@@ -10,7 +10,18 @@ const allCountry  =  async () => {
     }
 }
 
+const storeCountry = async (data, res) => {
+    try {
+        const country = await countryModel.create(data, { raw: true });
+        return country;
+    } catch (error) {
+        console.log(error);        
+    }
+}
+
+
 
 module.exports = {
-    allCountry
+    allCountry,
+    storeCountry
 }
