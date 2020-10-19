@@ -25,12 +25,12 @@
     - Show All Users : Done
     - Add new User : Done
     - Edit User
-    - Delete User 
+    - Delete User : Done
 6. Listing
     - Show all Listing  : Done
     - Add new Listing : Done
     - Edit Listing 
-    - Delete Listing 
+    - Delete Listing : Done
     - Category Wise Show Lsiting 
     - City Wise lisiting Show
 
