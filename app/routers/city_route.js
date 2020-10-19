@@ -4,12 +4,13 @@ const cityController = require('../controller/city_controller');
 
 
 // fetch all City
-cityRouter.get('/city', cityController.getAllCity );
+cityRouter.get('/city', cityController.getAllCity);
 
-
-
+// Add New City
 cityRouter.post('/city', cityController.cityStore);
 
+// Delete City
+cityRouter.delete('/city', cityController.cityDelete);
 
 
 module.exports = cityRouter;

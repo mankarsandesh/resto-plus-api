@@ -23,11 +23,25 @@ const storeCity = async (data, res) => {
     }
 }
 
-
+const deleteCity = async (cityID, res) => {
+    try {
+        const deleted = await cityModel.destroy({ where: { cityID : cityID} });
+        if(deleted == 1) {
+            // If the category is deleted
+            return "Sucessfully City Deleted";
+        }else{
+            return "cityID not found";
+        }
+    } catch (error) {
+        console.log(error);
+        throw new Error(error.message);
+    }
+}
 
 
 
 module.exports = {
     allCity,
-    storeCity
+    storeCity,
+    deleteCity
 }

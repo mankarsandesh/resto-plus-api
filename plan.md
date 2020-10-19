@@ -10,7 +10,7 @@
     - Show All City : Done 
     - Add New City : Done 
     - Edit City
-    - Delete City
+    - Delete City : Done 
 3. Country
     - Show All Country : Done
     - Add new Country : Done
