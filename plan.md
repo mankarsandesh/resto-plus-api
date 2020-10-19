@@ -15,7 +15,7 @@
     - Show All Country : Done
     - Add new Country : Done
     - Edit Country
-    - Delete Country
+    - Delete Country : Done 
 4. Category
     - Show all Category : Done
     - Add new Category : Done
@@ -25,7 +25,7 @@
     - Show All Users : Done
     - Add new User : Done
     - Edit User
-    - Delete User
+    - Delete User 
 6. Listing
     - Show all Listing  : Done
     - Add new Listing : Done
