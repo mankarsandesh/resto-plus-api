@@ -3,11 +3,14 @@ const countryRouter = express.Router();
 const countryController = require('../controller/country_controller');
 
 
-// fetch all City
-countryRouter.get('/country', countryController.getAllCountry );
+// fetch all Country
+countryRouter.get('/country', countryController.getAllCountry);
 
-
+// Add New Country
 countryRouter.post('/country', countryController.countryStore);
+
+// Delete Country
+countryRouter.delete('/country', countryController.countryDelete);
 
 
 module.exports = countryRouter;

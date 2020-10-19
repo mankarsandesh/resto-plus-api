@@ -1,4 +1,4 @@
-const {allCountry,storeCountry} = require('../components/models/country.interface');
+const {allCountry,storeCountry,deleteCountry} = require('../components/models/country.interface');
 const {successResponse, serverError} = require('../utils/utils');
 
 // fetch all Country 
@@ -28,8 +28,24 @@ const countryStore = async (req,res) => {
     }
 }
 
+// Delete Country 
+const countryDelete = async (req, res) => {
+    try {
+        const countryID = req.body.countryID;
+        const country = await deleteCountry(countryID);
+        if (country.error) {
+            return res.status(400).send(badRequestError(country.error));
+        }
+        return res.send(successResponse(country));
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(serverError());
+    }
+}
+
 
 module.exports = {
     getAllCountry,
-    countryStore
+    countryStore,
+    countryDelete
 }
