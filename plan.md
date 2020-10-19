@@ -5,7 +5,7 @@
     - Show All Currency : Done
     - Add New Currency : Done 
     - Edit Currency 
-    - Delete Currency
+    - Delete Currency : Done 
 2. City
     - Show All City : Done 
     - Add New City : Done 

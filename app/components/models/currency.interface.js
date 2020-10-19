@@ -1,6 +1,6 @@
 const currencyModel = require('../../models/currency');
 const { QueryTypes } = require('sequelize');
-const Sequelize = require('sequelize');
+const sequelize = require('sequelize');
 const db = require('../../db/config');
 
 
@@ -25,11 +25,13 @@ const storeCurrency = async (data, res) => {
 
 const deleteCurrency = async (currencyID, res) => {
     try {
-        const query = `DELETE currency WHERE id=${currencyID}`;
-        const deleted = await Sequelize.query(query, { type: QueryTypes.DELETE });
-        if(deleted[1]) {
+        const deleted = await currencyModel.destroy({ where: { currencyID : currencyID} });
+        console.log(deleted);
+        if(deleted == 1) {
             // If the Currency is deleted
-            return deleted;
+            return "Sucessfully Currency Deleted";
+        }else{
+            return "currencyID not found";
         }
     } catch (error) {
         console.log(error);

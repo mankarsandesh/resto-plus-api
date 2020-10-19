@@ -21,7 +21,7 @@ const listingRouter = require('./app/routers/listing_route');
 
 
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 5005;
+const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 // app.use(upload.array());
 
