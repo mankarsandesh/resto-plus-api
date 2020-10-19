@@ -20,8 +20,24 @@ const storeListing = async (data, res) => {
     }
 }
 
+const deleteListing = async (listingID, res) => {
+    try {
+        const deleted = await listingModel.destroy({ where: { listingID : listingID} });
+        if(deleted == 1) {
+            // If the category is deleted
+            return "Sucessfully Listing Deleted";
+        }else{
+            return "listingID not found";
+        }
+    } catch (error) {
+        console.log(error);
+        throw new Error(error.message);
+    }
+}
+
 
 module.exports = {
     allListing,
-    storeListing
+    storeListing,
+    deleteListing
 }

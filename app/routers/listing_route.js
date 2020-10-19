@@ -9,6 +9,9 @@ listingRouter.get('/listing', listingController.getAllListing );
 // fetch all listing
 listingRouter.post('/listing', listingController.listingStore );
 
+// Delete listing
+listingRouter.delete('/listing', listingController.listingDelete);
+
 
 
 

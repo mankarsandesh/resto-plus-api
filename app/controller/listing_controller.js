@@ -1,4 +1,4 @@
-const {allListing,storeListing} = require('../components/models/listing.interface');
+const {allListing,storeListing,deleteListing} = require('../components/models/listing.interface');
 const {successResponse, serverError} = require('../utils/utils');
 
 // fetch all currency 
@@ -28,7 +28,23 @@ const listingStore = async (req,res) => {
     }
 }
 
+// Delete Listing  
+const listingDelete = async (req, res) => {
+    try {
+        const listingID = req.body.listingID;
+        const listing = await deleteListing(listingID);
+        if (listing.error) {
+            return res.status(400).send(badRequestError(listing.error));
+        }
+        return res.send(successResponse(listing));
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(serverError());
+    }
+}
+
 module.exports = {
     getAllListing,
-    listingStore    
+    listingStore,
+    listingDelete    
 }
