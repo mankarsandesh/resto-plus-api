@@ -4,9 +4,9 @@ const sequelize = require('sequelize');
 const db = require('../../db/config');
 
 
-const allCurrency  =  async () => {
+const allCurrency = async () => {
     try {
-        const currency = await currencyModel.findAll({raw: true});
+        const currency = await currencyModel.findAll({ raw: true });
         return currency;
     } catch (error) {
         console.log(error);
@@ -19,18 +19,17 @@ const storeCurrency = async (data, res) => {
         const currency = await currencyModel.create(data, { raw: true });
         return currency;
     } catch (error) {
-        console.log(error);        
+        console.log(error);
     }
 }
 
 const deleteCurrency = async (currencyID, res) => {
     try {
-        const deleted = await currencyModel.destroy({ where: { currencyID : currencyID} });
-        console.log(deleted);
-        if(deleted == 1) {
+        const deleted = await currencyModel.destroy({ where: { currencyID: currencyID } });
+        if (deleted == 1) {
             // If the Currency is deleted
             return "Sucessfully Currency Deleted";
-        }else{
+        } else {
             return "currencyID not found";
         }
     } catch (error) {

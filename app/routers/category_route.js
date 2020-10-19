@@ -3,10 +3,13 @@ const categoryRouter = express.Router();
 const categoryController = require('../controller/category_controller');
 
 
-// fetch all Category
-categoryRouter.get('/category', categoryController.getAllCategory );
+// Fetch all Category
+categoryRouter.get('/category', categoryController.getAllCategory);
 
 // Create Category
-categoryRouter.post('/category', categoryController.categoryStore );
+categoryRouter.post('/category', categoryController.categoryStore);
+
+// Delete Category
+categoryRouter.delete('/category', categoryController.categoryDelete);
 
 module.exports = categoryRouter;

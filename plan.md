@@ -20,7 +20,7 @@
     - Show all Category : Done
     - Add new Category : Done
     - Edit Category
-    - Delete Category
+    - Delete Category : Done 
 5. User
     - Show All Users : Done
     - Add new User : Done
