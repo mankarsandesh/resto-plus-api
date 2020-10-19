@@ -7,7 +7,7 @@ const listingController = require('../controller/listing_controller');
 listingRouter.get('/listing', listingController.getAllListing );
 
 // fetch all listing
-listingRouter.post('/listing', listingController.getAllListing );
+listingRouter.post('/listing', listingController.listingStore );
 
 
 

@@ -17,11 +17,11 @@ const getAllListing =  async (req, res) => {
 const listingStore = async (req,res) => {
     try {        
         const userBody = req.body;    
-        const city = await storeListing(userBody);
-        if(city.error) {
-            return res.status(400).send(badRequestError(city.error));
+        const listing = await storeListing(userBody);
+        if(listing.error) {
+            return res.status(400).send(badRequestError(listing.error));
         }
-        return res.send(successResponse(city));
+        return res.send(successResponse(listing));
     } catch (error) {
         console.log(error);
         res.status(500).send(serverError());

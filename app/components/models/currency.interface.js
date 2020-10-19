@@ -23,10 +23,25 @@ const storeCurrency = async (data, res) => {
     }
 }
 
+const deleteCurrency = async (currencyID, res) => {
+    try {
+        const query = `DELETE currency WHERE id=${currencyID}`;
+        const deleted = await Sequelize.query(query, { type: QueryTypes.DELETE });
+        if(deleted[1]) {
+            // If the Currency is deleted
+            return deleted;
+        }
+    } catch (error) {
+        console.log(error);
+        throw new Error(error.message);
+    }
+}
+
 
 
 
 module.exports = {
     allCurrency,
-    storeCurrency
+    storeCurrency,
+    deleteCurrency
 }

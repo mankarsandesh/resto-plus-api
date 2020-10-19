@@ -1,36 +1,41 @@
 
 #API List
 
-#Master API
-
 1. Currency 
+    - Show All Currency : Done
+    - Add New Currency : Done 
+    - Edit Currency 
+    - Delete Currency
 2. City
+    - Show All City : Done 
+    - Add New City : Done 
+    - Edit City
+    - Delete City
 3. Country
+    - Show All Country : Done
+    - Add new Country : Done
+    - Edit Country
+    - Delete Country
 4. Category
+    - Show all Category : Done
+    - Add new Category : Done
+    - Edit Category
+    - Delete Category
+5. User
+    - Show All Users : Done
+    - Add new User : Done
+    - Edit User
+    - Delete User
+6. Listing
+    - Show all Listing  : Done
+    - Add new Listing : Done
+    - Edit Listing 
+    - Delete Listing 
+    - Category Wise Show Lsiting 
+    - City Wise lisiting Show
 
-#Main API List
 
-1. Listing 
-2. Listing Media 
-3. Users
-4. userReview
-5. userLikes
 
-Domain Name : Laos99.com
-
-User Site 
-
-1. Home Page
-2. Category Page
-3. Listing Page
-
-Admin Site 
-
-1. Add Currency
-2. Add City and Country
-3. View all Users
-4. View all Listing
-5. Add Lisiting 
 
 
 

@@ -1,4 +1,4 @@
-const {allCurrency , storeCurrency} = require('../components/models/currency.interface');
+const {allCurrency , storeCurrency,deleteCurrency} = require('../components/models/currency.interface');
 const {successResponse, serverError} = require('../utils/utils');
 
 // fetch all currency 
@@ -30,7 +30,24 @@ const currencyStore = async (req,res) => {
 }
 
 
+// Delete Currency 
+const currencyDelete = async (req,res) => {
+    try {        
+        const currencyID = req.body.currencyID;    
+        const currency = await deleteCurrency(currencyID);
+        if(currency.error) {
+            return res.status(400).send(badRequestError(currency.error));
+        }
+        return res.send(successResponse(currency));
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(serverError());
+    }
+}
+
+
 module.exports = {
     getAllCurrency,
-    currencyStore
+    currencyStore,
+    currencyDelete
 }

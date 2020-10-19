@@ -21,10 +21,6 @@ const Listing = db.define('listing', {
         allowNull: true,
         defaultValue : null
     },
-    password: {
-        type: DataTypes.STRING(100),
-        allowNull: false,        
-    },
     listingTitle: {
         type: DataTypes.STRING(255),
         allowNull: false,
