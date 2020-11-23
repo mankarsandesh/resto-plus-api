@@ -3,7 +3,7 @@ const countryRouter = express.Router();
 const countryController = require('../controller/country_controller');
 
 
-// fetch all Country
+// Fetch all Country
 countryRouter.get('/country', countryController.getAllCountry);
 
 // Add New Country

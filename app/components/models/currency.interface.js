@@ -39,10 +39,34 @@ const deleteCurrency = async (currencyID, res) => {
 }
 
 
+const editCurrency = async (data, res) => {
+    try {
+        const currencyCheck = await currencyModel.findOne({ where: { currencyID: data.currencyID } });
+       
+        if (currencyCheck) {
+            // If the Currency is deleted
+            const updated = await currencyModel.update(res, {
+                where: { currencyID: data.currencyID }
+            });
+            return "Sucessfully Currency Updated";
+            
+        } else {
+            return "currencyID not found";
+        }
+    } catch (error) {
+        console.log(error);
+        throw new Error(error.message);
+    }
+}
+
+
+
+
 
 
 module.exports = {
     allCurrency,
     storeCurrency,
-    deleteCurrency
+    deleteCurrency,
+    editCurrency
 }

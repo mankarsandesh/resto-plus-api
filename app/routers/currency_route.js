@@ -12,4 +12,9 @@ currencyRouter.post('/currency', currencyController.currencyStore);
 // Delete Currency
 currencyRouter.delete('/currency' , currencyController.currencyDelete);
 
+// Edit Currency
+currencyRouter.put('/currency' , currencyController.currencyEdit);
+
+
+
 module.exports = currencyRouter;
