@@ -19,7 +19,7 @@
 4. Category
     - Show all Category : Done
     - Add new Category : Done
-    - Edit Category
+    - Edit Category : Done
     - Delete Category : Done 
 5. User
     - Show All Users : Done
