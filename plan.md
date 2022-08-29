@@ -4,17 +4,17 @@
 1. Currency 
     - Show All Currency : Done
     - Add New Currency : Done 
-    - Edit Currency 
+    - Edit Currency : Done 
     - Delete Currency : Done 
 2. City
     - Show All City : Done 
     - Add New City : Done 
-    - Edit City
+    - Edit City : Done 
     - Delete City : Done 
 3. Country
     - Show All Country : Done
     - Add new Country : Done
-    - Edit Country
+    - Edit Country : Done 
     - Delete Country : Done 
 4. Category
     - Show all Category : Done

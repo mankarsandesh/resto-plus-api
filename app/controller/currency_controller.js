@@ -1,69 +1,74 @@
-const { allCurrency, storeCurrency, deleteCurrency,editCurrency } = require('../components/models/currency.interface');
-const { successResponse, serverError } = require('../utils/utils');
+const {
+	allCurrency,
+	storeCurrency,
+	deleteCurrency,
+	editCurrency,
+} = require('../components/models/currency.interface')
+const {
+	successResponse,
+	serverError,
+	notFoundError,
+} = require('../utils/utils')
 
-// fetch all currency 
+// fetch all currency
 const getAllCurrency = async (req, res) => {
-
-    try {
-        const currency = await allCurrency();
-        return res.send(successResponse(currency));
-    } catch (error) {
-        console.log(error);
-        res.status(500).send(serverError());
-    }
+	try {
+		const currency = await allCurrency()
+		return res.send(successResponse(currency))
+	} catch (error) {
+		console.log(error)
+		res.status(500).send(serverError())
+	}
 }
-
 
 // Store Currency Information
 const currencyStore = async (req, res) => {
-    try {
-        const userBody = req.body;
-        const currency = await storeCurrency(userBody);
-        if (currency.error) {
-            return res.status(400).send(badRequestError(currency.error));
-        }
-        return res.send(successResponse(currency));
-    } catch (error) {
-        console.log(error);
-        res.status(500).send(serverError());
-    }
+	try {
+		const userBody = req.body
+		const currency = await storeCurrency(userBody)
+		if (currency.error) {
+			return res.status(400).send(notFoundError(currency.error))
+		}
+		return res.send(successResponse(currency))
+	} catch (error) {
+		console.log(error)
+		res.status(500).send(serverError())
+	}
 }
 
-
-// Delete Currency 
+// Delete Currency
 const currencyDelete = async (req, res) => {
-    try {
-        const currencyID = req.body.currencyID;
-        const currency = await deleteCurrency(currencyID);
-        if (currency.error) {
-            return res.status(400).send(badRequestError(currency.error));
-        }
-        return res.send(successResponse(currency));
-    } catch (error) {
-        console.log(error);
-        res.status(500).send(serverError());
-    }
+	try {
+		const currencyID = req.body.currencyID
+		const currency = await deleteCurrency(currencyID)
+		if (currency.error) {
+			return res.status(400).send(badRequestError(currency.error))
+		}
+		return res.send(successResponse(currency))
+	} catch (error) {
+		console.log(error)
+		res.status(500).send(serverError())
+	}
 }
 
-// Edit Currency 
+// Edit Currency
 const currencyEdit = async (req, res) => {
-    try {
-        const userBody = req.body;
-        const currency = await editCurrency(userBody);
-        if (currency.error) {
-            return res.status(400).send(badRequestError(currency.error));
-        }
-        return res.send(successResponse(currency));
-    } catch (error) {
-        console.log(error);
-        res.status(500).send(serverError());
-    }
+	try {
+		const userBody = req.body
+		const currency = await editCurrency(userBody)
+		if (currency.error) {
+			return res.status(400).send(badRequestError(currency.error))
+		}
+		return res.send(successResponse(currency))
+	} catch (error) {
+		console.log(error)
+		res.status(500).send(serverError())
+	}
 }
-
 
 module.exports = {
-    getAllCurrency,
-    currencyStore,
-    currencyDelete,
-    currencyEdit
+	getAllCurrency,
+	currencyStore,
+	currencyDelete,
+	currencyEdit,
 }
