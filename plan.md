@@ -29,7 +29,7 @@
 6. Listing
     - Show all Listing  : Done
     - Add new Listing : Done
-    - Edit Listing 
+    - Edit Listing : Done
     - Delete Listing : Done
     - Category Wise Show Lsiting 
     - City Wise lisiting Show
