@@ -24,7 +24,7 @@
 5. User
     - Show All Users : Done
     - Add new User : Done
-    - Edit User
+    - Edit User : Done
     - Delete User : Done
 6. Listing
     - Show all Listing  : Done
