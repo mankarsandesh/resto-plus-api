@@ -53,9 +53,26 @@ const editUser = async (data, res) => {
 	}
 }
 
+const findUser = async (data, res) => {
+	try {
+		console.log(data, 'Okey')
+		const count = await usersModel.findOne({
+			where: { userEmail: data.userEmail },
+		})
+		if (count === null) {
+			return false
+		}
+		return true
+	} catch (error) {
+		console.log(error, 'errorr')
+		throw new Error(error.message)
+	}
+}
+
 module.exports = {
 	allUsers,
 	storeUsers,
 	deleteUser,
 	editUser,
+	findUser,
 }

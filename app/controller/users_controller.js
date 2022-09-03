@@ -3,9 +3,14 @@ const {
 	storeUsers,
 	deleteUser,
 	editUser,
+	findUser,
 } = require('../components/models/users.interface')
-const { successResponse, serverError } = require('../utils/utils')
-
+const {
+	successResponse,
+	serverError,
+	notFoundError,
+} = require('../utils/utils')
+const bcrypt = require('bcrypt')
 // fetch all get All users
 const getAllUsers = async (req, res) => {
 	try {
@@ -20,12 +25,25 @@ const getAllUsers = async (req, res) => {
 // Store users Information
 const usersStore = async (req, res) => {
 	try {
-		const userBody = req.body
-		const users = await storeUsers(userBody)
-		if (users.error) {
-			return res.status(400).send(badRequestError(users.error))
+		// const userBody = req.body
+		const salt = await bcrypt.genSalt(10)
+		var usersData = {
+			userName: req.body.userName,
+			userEmail: req.body.userEmail,
+			status: req.body.status,
+			password: await bcrypt.hash(req.body.password, salt),
 		}
-		return res.send(successResponse(users))
+		const count = await findUser(usersData)
+		console.log(count, 'count')
+		if (count) {
+			return res.status(404).send(notFoundError('Email Id Already Exits'))
+		} else {
+			const users = await storeUsers(usersData)
+			if (users.error) {
+				return res.status(400).send(badRequestError(users.error))
+			}
+			return res.send(successResponse(users))
+		}
 	} catch (error) {
 		console.log(error)
 		res.status(500).send(serverError())
