@@ -4,6 +4,7 @@ const {
 	deleteUser,
 	editUser,
 	findUser,
+	findUserData,
 } = require('../components/models/users.interface')
 const {
 	successResponse,
@@ -11,6 +12,43 @@ const {
 	notFoundError,
 } = require('../utils/utils')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+
+// Store users Information
+const AuthUsers = async (req, res) => {
+	try {
+		var usersData = {
+			userEmail: req.body.userEmail,
+			password: req.body.password,
+		}
+		const userData = await findUserData(usersData)
+		if (!(await bcrypt.compare(usersData.password, userData.password))) {
+			return res
+				.status(401)
+				.send(notFoundError('Your Email and Password is InCorrect'))
+		} else {
+			const token = jwt.sign(
+				{ user: userData.userEmail },
+				process.env.JWT_SECRET_KEY,
+				{
+					expiresIn: process.env.JWT_EXPIRES_IN,
+				}
+			)
+			const cookieOptions = {
+				expires: new Date(
+					Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+				),
+				httpOnly: true,
+			}
+			res.cookie('joes', token, cookieOptions)
+			return res.send(successResponse(userData))
+		}
+	} catch (error) {
+		console.log(error)
+		res.status(500).send(serverError())
+	}
+}
+
 // fetch all get All users
 const getAllUsers = async (req, res) => {
 	try {
@@ -79,6 +117,7 @@ const userEdit = async (req, res) => {
 	}
 }
 module.exports = {
+	AuthUsers,
 	getAllUsers,
 	usersStore,
 	usersDelete,

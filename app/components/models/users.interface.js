@@ -55,7 +55,6 @@ const editUser = async (data, res) => {
 
 const findUser = async (data, res) => {
 	try {
-		console.log(data, 'Okey')
 		const count = await usersModel.findOne({
 			where: { userEmail: data.userEmail },
 		})
@@ -64,7 +63,20 @@ const findUser = async (data, res) => {
 		}
 		return true
 	} catch (error) {
-		console.log(error, 'errorr')
+		throw new Error(error.message)
+	}
+}
+
+const findUserData = async (data, res) => {
+	try {
+		const count = await usersModel.findOne({
+			where: { userEmail: data.userEmail },
+		})
+		if (count === null) {
+			return false
+		}
+		return count
+	} catch (error) {
 		throw new Error(error.message)
 	}
 }
@@ -75,4 +87,5 @@ module.exports = {
 	deleteUser,
 	editUser,
 	findUser,
+	findUserData,
 }
