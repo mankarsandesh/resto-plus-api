@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 node_modules
 .env
 images
 node_modules
-=======
-# Dependency directories
-node_modules/
->>>>>>> 8fe997ff4e67306e3b8a0638b39b4803d7ae27a3
