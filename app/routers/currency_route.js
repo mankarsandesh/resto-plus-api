@@ -1,20 +1,34 @@
-const express = require('express');
-const currencyRouter = express.Router();
-const currencyController = require('../controller/currency_controller');
-
+const express = require('express')
+const currencyRouter = express.Router()
+const currencyController = require('../controller/currency_controller')
+const authJwt = require('../middleware/validators/authJwt')
 
 // fetch all Cuyrrenc
-currencyRouter.get('/currency', currencyController.getAllCurrency );
+currencyRouter.get(
+	'/currency',
+	authJwt.verifyToken,
+	currencyController.getAllCurrency
+)
 
 //  add new Currency
-currencyRouter.post('/currency', currencyController.currencyStore);
+currencyRouter.post(
+	'/currency',
+	authJwt.verifyToken,
+	currencyController.currencyStore
+)
 
 // Delete Currency
-currencyRouter.delete('/currency' , currencyController.currencyDelete);
+currencyRouter.delete(
+	'/currency',
+	authJwt.verifyToken,
+	currencyController.currencyDelete
+)
 
 // Edit Currency
-currencyRouter.put('/currency' , currencyController.currencyEdit);
+currencyRouter.put(
+	'/currency',
+	authJwt.verifyToken,
+	currencyController.currencyEdit
+)
 
-
-
-module.exports = currencyRouter;
+module.exports = currencyRouter

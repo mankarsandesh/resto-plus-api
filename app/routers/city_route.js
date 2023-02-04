@@ -1,17 +1,18 @@
 const express = require('express')
 const cityRouter = express.Router()
 const cityController = require('../controller/city_controller')
+const authJwt = require('../middleware/validators/authJwt')
 
 // fetch all City
-cityRouter.get('/city', cityController.getAllCity)
+cityRouter.get('/city', authJwt.verifyToken, cityController.getAllCity)
 
 // Add New City
-cityRouter.post('/city', cityController.cityStore)
+cityRouter.post('/city', authJwt.verifyToken, cityController.cityStore)
 
 // Delete City
-cityRouter.delete('/city', cityController.cityDelete)
+cityRouter.delete('/city', authJwt.verifyToken, cityController.cityDelete)
 
 // Edit City
-cityRouter.put('/city', cityController.cityEdit)
+cityRouter.put('/city', authJwt.verifyToken, cityController.cityEdit)
 
 module.exports = cityRouter
