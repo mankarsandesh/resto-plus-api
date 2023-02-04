@@ -7,20 +7,22 @@ const {
 	validateAuthUser,
 } = require('../middleware/validators/users')
 const validate = require('../middleware/validators/validate')
+const authJwt = require('../middleware/validators/authJwt')
 
 // Login  Users
-usersRouter.post(
-	'/auth/users',
-	validateAuthUser(),
-	validate,
-	userController.AuthUsers
-)
+usersRouter.post('/auth/users', validate, userController.AuthUsers)
 
 // fetch all Users
-usersRouter.get('/users', userController.getAllUsers)
+usersRouter.get('/users', authJwt.verifyToken, userController.getAllUsers)
 
 // Create new Users
-usersRouter.post('/users', validateUsers(), validate, userController.usersStore)
+usersRouter.post(
+	'/users',
+	authJwt.verifyToken,
+	validateUsers(),
+	validate,
+	userController.usersStore
+)
 
 // Update  User
 usersRouter.put('/users', validateUsers(), validate, userController.userEdit)

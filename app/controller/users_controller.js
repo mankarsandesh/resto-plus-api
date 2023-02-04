@@ -13,8 +13,8 @@ const {
 } = require('../utils/utils')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-
-// Store users Information
+const { promisify } = require('util')
+// Users Login
 const AuthUsers = async (req, res) => {
 	try {
 		var usersData = {
@@ -29,19 +29,17 @@ const AuthUsers = async (req, res) => {
 		} else {
 			const token = jwt.sign(
 				{ user: userData.userEmail },
-				process.env.JWT_SECRET_KEY,
-				{
-					expiresIn: process.env.JWT_EXPIRES_IN,
-				}
+				process.env.JWT_SECRET_KEY
 			)
-			const cookieOptions = {
-				expires: new Date(
-					Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-				),
-				httpOnly: true,
-			}
-			res.cookie('joes', token, cookieOptions)
-			return res.send(successResponse(userData))
+			return res.send(
+				successResponse({
+					id: userData.userID,
+					userName: userData.userName,
+					userEmail: userData.userEmail,
+					userType: userData.userType,
+					token: token,
+				})
+			)
 		}
 	} catch (error) {
 		console.log(error)
@@ -49,6 +47,10 @@ const AuthUsers = async (req, res) => {
 	}
 }
 
+// Check users Login or nor
+// const isLoggedIn = async (req, res, next) => {
+// 	console.log(req.cookies.joes, 'Cookies')
+// }
 // fetch all get All users
 const getAllUsers = async (req, res) => {
 	try {
