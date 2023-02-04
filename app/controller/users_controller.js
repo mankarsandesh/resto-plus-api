@@ -37,7 +37,7 @@ const AuthUsers = async (req, res) => {
 					userName: userData.userName,
 					userEmail: userData.userEmail,
 					userType: userData.userType,
-					token: token,
+					access_token: token,
 				})
 			)
 		}

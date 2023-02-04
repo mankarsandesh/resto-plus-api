@@ -2,10 +2,7 @@ const express = require('express')
 const usersRouter = express.Router()
 const userController = require('../controller/users_controller')
 // validation
-const {
-	validateUsers,
-	validateAuthUser,
-} = require('../middleware/validators/users')
+const { validateUsers } = require('../middleware/validators/users')
 const validate = require('../middleware/validators/validate')
 const authJwt = require('../middleware/validators/authJwt')
 
@@ -25,9 +22,15 @@ usersRouter.post(
 )
 
 // Update  User
-usersRouter.put('/users', validateUsers(), validate, userController.userEdit)
+usersRouter.put(
+	'/users',
+	authJwt.verifyToken,
+	validateUsers(),
+	validate,
+	userController.userEdit
+)
 
 // Delete Users
-usersRouter.delete('/users', userController.usersDelete)
+usersRouter.delete('/users', authJwt.verifyToken, userController.usersDelete)
 
 module.exports = usersRouter
