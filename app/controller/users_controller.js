@@ -52,7 +52,6 @@ const AuthUsers = async (req, res) => {
 const getAllUsers = async (req, res) => {
 	try {
 		const user = await allUsers()
-		console.log(user)
 		return res.send(successResponse(user))
 	} catch (error) {
 		console.log(error)

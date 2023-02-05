@@ -69,9 +69,10 @@ const findUser = async (data, res) => {
 
 const findUserData = async (data, res) => {
 	try {
-		const count = await usersModel.findOne({
+		const count = await usersModel.scope('withPassword').findOne({
 			where: { userEmail: data.userEmail },
 		})
+
 		if (count === null) {
 			return false
 		}

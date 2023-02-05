@@ -57,11 +57,20 @@ const Users = db.define(
 	{
 		freezeTableName: true,
 		tableName: 'users',
+		// Password can not return
 		defaultScope: {
 			attributes: {
 				exclude: ['password', 'createdAt'],
 			},
 			order: [['userID', 'DESC']],
+		},
+		// Scope Define then return password
+		scopes: {
+			withPassword: {
+				attributes: {
+					include: ['password'],
+				},
+			},
 		},
 	}
 )
