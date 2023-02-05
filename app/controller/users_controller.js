@@ -14,6 +14,7 @@ const {
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { promisify } = require('util')
+const console = require('console')
 // Users Login
 const AuthUsers = async (req, res) => {
 	try {
@@ -47,14 +48,11 @@ const AuthUsers = async (req, res) => {
 	}
 }
 
-// Check users Login or nor
-// const isLoggedIn = async (req, res, next) => {
-// 	console.log(req.cookies.joes, 'Cookies')
-// }
 // fetch all get All users
 const getAllUsers = async (req, res) => {
 	try {
 		const user = await allUsers()
+		console.log(user)
 		return res.send(successResponse(user))
 	} catch (error) {
 		console.log(error)
