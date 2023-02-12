@@ -23,7 +23,12 @@ const AuthUsers = async (req, res) => {
 			password: req.body.password,
 		}
 		const userData = await findUserData(usersData)
-		if (!(await bcrypt.compare(usersData.password, userData.password))) {
+		console.log(userData, 'userData')
+		if (!userData) {
+			return res
+				.status(401)
+				.send(notFoundError('Your Email and Password is InCorrect'))
+		} else if (!(await bcrypt.compare(usersData.password, userData.password))) {
 			return res
 				.status(401)
 				.send(notFoundError('Your Email and Password is InCorrect'))

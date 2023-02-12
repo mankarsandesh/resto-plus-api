@@ -76,6 +76,7 @@ const findUserData = async (data, res) => {
 		if (count === null) {
 			return false
 		}
+		// await bcrypt.compare(data.password, count.password)
 		return count
 	} catch (error) {
 		throw new Error(error.message)
