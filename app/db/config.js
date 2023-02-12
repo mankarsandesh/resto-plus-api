@@ -19,7 +19,7 @@ const sequelize = new Sequelize(
 				return next()
 			},
 		},
-		timezone: process.env.DB_TIMEZONE,
+		// timezone: process.env.DB_TIMEZONE,
 	}
 )
 
