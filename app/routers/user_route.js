@@ -6,6 +6,11 @@ const { validateUsers } = require('../middleware/validators/users')
 const validate = require('../middleware/validators/validate')
 const authJwt = require('../middleware/validators/authJwt')
 
+// Teste Routes
+// usersRouter.get('/test', 'Hello')
+usersRouter.get('/test', (req, res) => {
+	res.send('Testing')
+})
 // Login  Users
 usersRouter.post('/auth/users', validate, userController.AuthUsers)
 

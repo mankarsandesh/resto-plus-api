@@ -6,7 +6,6 @@ const sequelize = new Sequelize(
 	process.env.DB_PASSWORD,
 	{
 		host: process.env.DB_HOSTNAME,
-		port: process.env.DB_PORT,
 		dialect: 'mysql',
 		dialectOptions: {
 			//useUTC: false,
@@ -19,7 +18,7 @@ const sequelize = new Sequelize(
 				return next()
 			},
 		},
-		// timezone: process.env.DB_TIMEZONE,
+		timezone: process.env.DB_TIMEZONE,
 	}
 )
 

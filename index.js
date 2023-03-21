@@ -27,15 +27,12 @@ var device = require('express-device')
 app.use(device.capture())
 
 //CORS configuration
-// const corsOptions = {
-// 	origin: '*',
-// 	//Expose the token on the client side in the response
-// 	exposedHeaders: ['token'],
-// 	withCredentials: true,
-// }
+const corsOptions = {
+	origin: '*',
+}
 
 //CORS middleware
-app.use(cors())
+app.use(cors(corsOptions))
 
 // Routers
 app.use(cityRouter)
