@@ -9,7 +9,7 @@ const authJwt = require('../middleware/validators/authJwt')
 // Teste Routes
 // usersRouter.get('/test', 'Hello')
 usersRouter.get('/test', (req, res) => {
-	res.send('Testing')
+	res.send('Testing123')
 })
 // Login  Users
 usersRouter.post('/auth/users', validate, userController.AuthUsers)
