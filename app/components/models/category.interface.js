@@ -1,5 +1,6 @@
 const categoryModel = require('../../models/category')
 
+// All category
 const allCategory = async () => {
 	try {
 		const category = await categoryModel.findAll({ raw: true })
@@ -9,7 +10,7 @@ const allCategory = async () => {
 		throw new Error()
 	}
 }
-
+// Add Category
 const storeCategory = async (data, res) => {
 	try {
 		const category = await categoryModel.create(data, { raw: true })
@@ -18,7 +19,7 @@ const storeCategory = async (data, res) => {
 		console.log(error)
 	}
 }
-
+// Delete Category
 const deleteCategory = async (categoryID, res) => {
 	try {
 		const deleted = await categoryModel.destroy({
@@ -35,7 +36,7 @@ const deleteCategory = async (categoryID, res) => {
 		throw new Error(error.message)
 	}
 }
-
+// Edit Category
 const editCategory = async (data, res) => {
 	try {
 		const categoryCheck = await categoryModel.findOne({

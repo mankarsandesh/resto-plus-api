@@ -1,5 +1,5 @@
 const countryModel = require('../../models/country')
-
+// All Country
 const allCountry = async () => {
 	try {
 		const country = await countryModel.findAll({ raw: true })
@@ -9,7 +9,7 @@ const allCountry = async () => {
 		throw new Error()
 	}
 }
-
+// Add Country
 const storeCountry = async (data, res) => {
 	try {
 		const country = await countryModel.create(data, { raw: true })
@@ -37,6 +37,7 @@ const editCountry = async (data, res) => {
 		throw new Error(error.message)
 	}
 }
+// Delete Country
 const deleteCountry = async (countryID, res) => {
 	try {
 		const deleted = await countryModel.destroy({

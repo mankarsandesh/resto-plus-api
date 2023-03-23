@@ -2,7 +2,7 @@ const listingModel = require('../../models/listing')
 const { findCity } = require('../../components/models/city.interface')
 const { findCategory } = require('../../components/models/category.interface')
 const { findCurrency } = require('../../components/models/currency.interface')
-
+// List all
 const allListing = async () => {
 	try {
 		const listing = await listingModel.findAll({ raw: true })
@@ -50,7 +50,7 @@ const allListing = async () => {
 		throw new Error()
 	}
 }
-
+// Add New Listing
 const storeListing = async (data, res) => {
 	try {
 		const listing = await listingModel.create(data, { raw: true })
@@ -59,6 +59,7 @@ const storeListing = async (data, res) => {
 		console.log(error)
 	}
 }
+// Edit Listing
 const editListing = async (data, res) => {
 	try {
 		const listingCheck = await listingModel.findOne({
@@ -77,6 +78,8 @@ const editListing = async (data, res) => {
 		throw new Error(error.message)
 	}
 }
+
+// Delete Listing
 const deleteListing = async (listingID, res) => {
 	try {
 		const deleted = await listingModel.destroy({

@@ -1,5 +1,5 @@
 const usersModel = require('../../models/users')
-
+// Find all Users
 const allUsers = async () => {
 	try {
 		const user = await usersModel.findAll({ raw: true })
@@ -9,7 +9,7 @@ const allUsers = async () => {
 		throw new Error()
 	}
 }
-
+// Add New user
 const storeUsers = async (data, res) => {
 	try {
 		const users = await usersModel.create(data, { raw: true })
@@ -18,7 +18,7 @@ const storeUsers = async (data, res) => {
 		console.log(error)
 	}
 }
-
+// Delete Uers
 const deleteUser = async (userID, res) => {
 	try {
 		const deleted = await usersModel.destroy({ where: { userID: userID } })
@@ -33,7 +33,7 @@ const deleteUser = async (userID, res) => {
 		throw new Error(error.message)
 	}
 }
-
+// Edit Users
 const editUser = async (data, res) => {
 	try {
 		const userCheck = await usersModel.findOne({
@@ -52,7 +52,7 @@ const editUser = async (data, res) => {
 		throw new Error(error.message)
 	}
 }
-
+// Find User
 const findUser = async (data, res) => {
 	try {
 		const count = await usersModel.findOne({
@@ -66,7 +66,7 @@ const findUser = async (data, res) => {
 		throw new Error(error.message)
 	}
 }
-
+// Find User Data
 const findUserData = async (data, res) => {
 	try {
 		const count = await usersModel.scope('withPassword').findOne({
