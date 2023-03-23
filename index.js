@@ -17,6 +17,7 @@ const countryRouter = require('./app/routers/country_route')
 const categoryRouter = require('./app/routers/category_route')
 const currencyRouter = require('./app/routers/currency_route')
 const listingRouter = require('./app/routers/listing_route')
+const listingMediaRouter = require('./app/routers/listing_media_route')
 
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000
@@ -41,6 +42,7 @@ app.use(countryRouter)
 app.use(categoryRouter)
 app.use(currencyRouter)
 app.use(listingRouter)
+app.use(listingMediaRouter)
 
 app.listen(port, () => {
 	console.log(`Server is up on port ${port}`)
