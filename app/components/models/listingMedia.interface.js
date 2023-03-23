@@ -1,6 +1,6 @@
 const mediaModel = require('../../models/media')
 
-// Add New Listing
+// upload media in listing
 const storeMedia = async (data, res) => {
 	try {
 		const response = await mediaModel.create(data, { raw: true })

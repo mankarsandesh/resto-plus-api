@@ -9,5 +9,11 @@ mediaRouter.get(
 	authJwt.verifyToken,
 	listingMediaController.getAllListingMedia
 )
+// Write media upload route here
+mediaRoute.post(
+	'/listingMedia',
+	authJwt.verifyToken,
+	listingMediaController.uploadListingMedia
+)
 
 module.exports = mediaRouter
