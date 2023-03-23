@@ -10,7 +10,7 @@ mediaRouter.get(
 	listingMediaController.getAllListingMedia
 )
 // Write media upload route here
-mediaRoute.post(
+mediaRouter.post(
 	'/listingMedia',
 	authJwt.verifyToken,
 	listingMediaController.uploadListingMedia
