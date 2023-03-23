@@ -54,9 +54,22 @@ const editCategory = async (data, res) => {
 		throw new Error(error.message)
 	}
 }
+// FInd category
+const findCategory = async (data, res) => {
+	try {
+		const categoryCheck = await categoryModel.findOne({
+			where: { categoryID: data.categoryID },
+		})
+		return categoryCheck
+	} catch (error) {
+		console.log(error)
+		throw new Error(error.message)
+	}
+}
 module.exports = {
 	allCategory,
 	storeCategory,
 	deleteCategory,
 	editCategory,
+	findCategory,
 }

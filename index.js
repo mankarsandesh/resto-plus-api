@@ -46,4 +46,6 @@ app.listen(port, () => {
 	console.log(`Server is up on port ${port}`)
 })
 
+// Determine whether the sentiment of text is positive
+// Use a web service
 module.exports = app

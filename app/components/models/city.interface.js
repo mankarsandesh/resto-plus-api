@@ -3,6 +3,7 @@ const { QueryTypes } = require('sequelize')
 const Sequelize = require('sequelize')
 const db = require('../../db/config')
 
+// Find all City
 const allCity = async () => {
 	try {
 		const city = await cityModel.findAll({ raw: true })
@@ -12,7 +13,7 @@ const allCity = async () => {
 		throw new Error()
 	}
 }
-
+// Add City
 const storeCity = async (data, res) => {
 	try {
 		const city = await cityModel.create(data, { raw: true })
@@ -21,7 +22,7 @@ const storeCity = async (data, res) => {
 		console.log(error)
 	}
 }
-
+// Delete City
 const deleteCity = async (cityID, res) => {
 	try {
 		const deleted = await cityModel.destroy({ where: { cityID: cityID } })
@@ -36,7 +37,7 @@ const deleteCity = async (cityID, res) => {
 		throw new Error(error.message)
 	}
 }
-
+// Edit City
 const editCity = async (data, res) => {
 	try {
 		const cityCheck = await cityModel.findOne({
@@ -56,9 +57,23 @@ const editCity = async (data, res) => {
 	}
 }
 
+// Find  City Name
+const findCity = async (data, res) => {
+	try {
+		const cityCheck = await cityModel.findOne({
+			where: { cityID: data.cityID },
+		})
+		return cityCheck
+	} catch (error) {
+		console.log(error)
+		throw new Error(error.message)
+	}
+}
+
 module.exports = {
 	allCity,
 	storeCity,
 	deleteCity,
 	editCity,
+	findCity,
 }
