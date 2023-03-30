@@ -20,7 +20,7 @@ const Users = db.define(
 			unique: true,
 		},
 		userType: {
-			type: DataTypes.ENUM('user', 'agent', 'admin'),
+			type: DataTypes.ENUM('user', 'agent', 'owner', 'admin'),
 			defaultValue: 'user',
 		},
 		emailActive: {

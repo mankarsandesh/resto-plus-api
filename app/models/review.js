@@ -1,41 +1,28 @@
 const DataTypes = require('sequelize')
 const db = require('../db/config')
 
-const media = db.define(
+const review = db.define(
 	'media',
 	{
-		mediaId: {
+		reviewId: {
 			type: DataTypes.BIGINT(20).UNSIGNED,
 			allowNull: false,
 			primaryKey: true,
 			autoIncrement: true,
 			unique: true,
 		},
-		id: {
+		userId: {
 			type: DataTypes.INTEGER(10).UNSIGNED,
 			allowNull: false,
 		},
-		mediaType: {
-			type: DataTypes.ENUM('review', 'listing'),
-			allowNull: false,
-		},
-		fileName: {
+		comments: {
 			type: DataTypes.STRING(255),
 			allowNull: false,
 			primaryKey: true,
 		},
-		fileurl: {
-			type: DataTypes.STRING(255),
-			allowNull: false,
-		},
-		filesize: {
-			type: DataTypes.STRING(10),
-			allowNull: false,
-			primaryKey: true,
-		},
-		type: {
-			type: DataTypes.STRING(255),
-			allowNull: false,
+
+		media: {
+			type: DataTypes.BOOLEAN,
 		},
 		status: {
 			type: DataTypes.INTEGER(10).UNSIGNED,
@@ -61,8 +48,8 @@ const media = db.define(
 	},
 	{
 		freezeTableName: true,
-		tableName: 'media',
+		tableName: 'review',
 	}
 )
 
-module.exports = media
+module.exports = review
