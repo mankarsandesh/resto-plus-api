@@ -55,9 +55,17 @@ const AuthUsers = async (req, res) => {
 
 // fetch all get All users
 const getAllUsers = async (req, res) => {
+	console.log(req.query, 'sasa')
 	try {
 		const user = await allUsers()
-		return res.send(successResponse(user))
+		const data = {
+			page: Number(req.query.page),
+			per_page: Number(req.query.per_page),
+			total: user.length,
+			total_pages: Math.ceil(user.length / 10),
+			data: user,
+		}
+		return res.send(successResponse(data))
 	} catch (error) {
 		console.log(error)
 		res.status(500).send(serverError())

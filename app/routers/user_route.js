@@ -18,13 +18,7 @@ usersRouter.post('/auth/users', validate, userController.AuthUsers)
 usersRouter.get('/users', authJwt.verifyToken, userController.getAllUsers)
 
 // Create new Users
-usersRouter.post(
-	'/users',
-	authJwt.verifyToken,
-	validateUsers(),
-	validate,
-	userController.usersStore
-)
+usersRouter.post('/users', validateUsers(), validate, userController.usersStore)
 
 // Update  User
 usersRouter.put(

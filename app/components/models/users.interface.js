@@ -1,8 +1,15 @@
 const usersModel = require('../../models/users')
 // Find all Users
 const allUsers = async () => {
+	let limit = 10
+	let offset = 0 + (req.body.page - 1) * limit
 	try {
-		const user = await usersModel.findAll({ raw: true })
+		const user = await usersModel.findAndCountAll({
+			offset: offset,
+			limit: limit,
+			order: [['date', 'ASC']],
+			raw: true,
+		})
 		return user
 	} catch (error) {
 		console.log(error)
@@ -76,7 +83,6 @@ const findUserData = async (data, res) => {
 		if (count === null) {
 			return false
 		}
-		// await bcrypt.compare(data.password, count.password)
 		return count
 	} catch (error) {
 		throw new Error(error.message)
