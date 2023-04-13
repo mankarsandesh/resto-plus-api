@@ -1,18 +1,15 @@
 const usersModel = require('../../models/users')
 // Find all Users
-const allUsers = async () => {
-	let limit = 10
-	let offset = 0 + (req.body.page - 1) * limit
+const allUsers = async (request) => {
+	let offset = 0 + (request.page - 1) * request.per_page
 	try {
 		const user = await usersModel.findAndCountAll({
 			offset: offset,
-			limit: limit,
-			order: [['date', 'ASC']],
-			raw: true,
+			limit: request.per_page,
+			raw: false,
 		})
-		return user
+		return user.rows
 	} catch (error) {
-		console.log(error)
 		throw new Error()
 	}
 }

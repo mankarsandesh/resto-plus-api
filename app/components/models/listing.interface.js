@@ -6,45 +6,50 @@ const { findCurrency } = require('../../components/models/currency.interface')
 const allListing = async () => {
 	try {
 		const listing = await listingModel.findAll({ raw: true })
+		console.log(listing, 'list')
+		if (listing.length > 0) {
+			// Find category Name
+			const catBody = { categoryID: listing[0].categoryID }
+			const categoryResponse = await findCategory(catBody)
 
-		// Find category Name
-		const catBody = { categoryID: listing[0].categoryID }
-		const categoryResponse = await findCategory(catBody)
+			// Find city Name
+			const cityBody = { cityID: listing[0].city }
+			const cityResponse = await findCity(cityBody)
 
-		// Find city Name
-		const cityBody = { cityID: listing[0].city }
-		const cityResponse = await findCity(cityBody)
+			// Find currency Name
+			const currencyyBody = { currencyID: listing[0].currency }
+			const currencyyResponse = await findCurrency(currencyyBody)
 
-		// Find currency Name
-		const currencyyBody = { currencyID: listing[0].currency }
-		const currencyyResponse = await findCurrency(currencyyBody)
-
-		const listingReturn = {
-			listingID: listing[0].listingID,
-			emailID: listing[0].emailID,
-			phoneNo: listing[0].phoneNo,
-			contactNo: listing[0].contactNo,
-			listingTitle: listing[0].listingTitle,
-			listingDescription: listing[0].listingDescription,
-			category: categoryResponse,
-			city: cityResponse,
-			address: listing[0].address,
-			website: listing[0].website,
-			workingHours: listing[0].workingHours,
-			currency: currencyyResponse,
-			priceStatus: 3,
-			priceFrom: listing[0].priceFrom,
-			priceTo: listing[0].priceTo,
-			youTubeVideo: listing[0].youTubeVideo,
-			facebook: listing[0].facebook,
-			instagram: listing[0].instagram,
-			listingKeywords: listing[0].listingKeywords,
-			listingStatus: listing[0].listingStatus,
-			createdAt: listing[0].createdAt,
-			updatedAt: listing[0].updatedAt,
-			deleted_at: listing[0].deletedAt,
+			const listingReturn = {
+				listingID: listing[0].listingID,
+				emailID: listing[0].emailID,
+				phoneNo: listing[0].phoneNo,
+				contactNo: listing[0].contactNo,
+				listingTitle: listing[0].listingTitle,
+				listingDescription: listing[0].listingDescription,
+				category: categoryResponse,
+				city: cityResponse,
+				address: listing[0].address,
+				website: listing[0].website,
+				workingHours: listing[0].workingHours,
+				currency: currencyyResponse,
+				priceStatus: 3,
+				priceFrom: listing[0].priceFrom,
+				priceTo: listing[0].priceTo,
+				youTubeVideo: listing[0].youTubeVideo,
+				facebook: listing[0].facebook,
+				instagram: listing[0].instagram,
+				listingKeywords: listing[0].listingKeywords,
+				listingStatus: listing[0].listingStatus,
+				createdAt: listing[0].createdAt,
+				updatedAt: listing[0].updatedAt,
+				deleted_at: listing[0].deletedAt,
+			}
+			return listingReturn
+		} else {
+			const listingReturn = 'No Listing Found'
+			return listingReturn
 		}
-		return listingReturn
 	} catch (error) {
 		console.log(error)
 		throw new Error()

@@ -57,10 +57,16 @@ const AuthUsers = async (req, res) => {
 const getAllUsers = async (req, res) => {
 	console.log(req.query, 'sasa')
 	try {
-		const user = await allUsers()
-		const data = {
+		var req = {
 			page: Number(req.query.page),
 			per_page: Number(req.query.per_page),
+		}
+		console.log(req, 'req')
+		const user = await allUsers(req)
+		console.log(user, 'user')
+		const data = {
+			page: req.page,
+			per_page: req.per_page,
 			total: user.length,
 			total_pages: Math.ceil(user.length / 10),
 			data: user,
@@ -68,7 +74,7 @@ const getAllUsers = async (req, res) => {
 		return res.send(successResponse(data))
 	} catch (error) {
 		console.log(error)
-		res.status(500).send(serverError())
+		return res.status(500).send(serverError())
 	}
 }
 
